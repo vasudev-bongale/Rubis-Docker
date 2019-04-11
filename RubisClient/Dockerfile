@@ -11,12 +11,10 @@ RUN yum -y update \
                       sysstat \
     && wget -q 'http://mirror.karneval.cz/pub/linux/fedora/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm' \
     && rpm -ivh epel-release-7-11.noarch.rpm \
-    && yum install -y supervisor \
-    && wget -q --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; \
-       oraclelicense=accept-securebackup-cookie" \
-       http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.rpm \
-    && yum install -y /jdk-8u161-linux-x64.rpm \
-    && rm -f /jdk-8u161-linux-x64.rpm \
+    && yum install -y supervisor
+RUN wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+RUN yum install -y /jdk-8u131-linux-x64.rpm
+RUN rm -f /jdk-8u131-linux-x64.rpm \
     && yum clean all \
     && rm -rf /var/cache/yum
 

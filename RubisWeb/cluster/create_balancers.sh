@@ -16,14 +16,14 @@
 #get the loadbalanced hosts from the Docker API!
 function get_backend () {
 
-  python << EOF
-  import docker
+python << EOF
+import docker
 
-  client=docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
-  hosts=''
-  for container in client.containers.list(filters={"label":"loadbalancer=apache"}):
-     hosts+=container.name+' '
-  print hosts
+client=docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
+hosts=''
+for container in client.containers.list(filters={"label":"loadbalancer=apache"}):
+   hosts+=container.name+' '
+print hosts
 EOF
 }
 

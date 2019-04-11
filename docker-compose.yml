@@ -1,20 +1,25 @@
 version: '2.1'
 services:
   rubis:
+    container_name: rubis
     build:
       context: ./Rubis
+    ports:
+     - "6001:8080"
     depends_on:
      - rubisdb
     labels:
       loadbalancer: "apache"
   rubisdb:
+    container_name: rubisdb
     build:
       context: ./RubisDB
   rubisweb:
+    container_name: rubisweb
     build:
       context: ./RubisWeb
     ports:
-     - "5002:80"
+     - "6002:80"
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
@@ -22,6 +27,7 @@ services:
     security_opt:
      - label:disable
   rubisclient:
+    container_name: rubisclient
     depends_on:
      - rubisdb
      - rubis
@@ -29,6 +35,6 @@ services:
     build:
       context: ./RubisClient
     ports:
-     - "5003:80"
+     - "6003:80"
     environment:
      - TARGET=emulator

@@ -4,7 +4,7 @@ services:
     build:
       context: ./Rubis
     ports:
-     - "5001:8080"
+     - "6001:8080"
     depends_on:
      - rubisdb
   rubisdb:
@@ -14,9 +14,9 @@ services:
     build:
       context: ./RubisWeb
     ports:
-     - "5002:80"
+     - "6002:80"
     environment:
-     - LB_MEMBER_1=dockerfiles_rubis_1
+     - LB_MEMBER_1=rubis1
     depends_on:
      - rubis
   rubisclient:
@@ -27,6 +27,6 @@ services:
     build:
       context: ./RubisClient
     ports:
-     - "5003:80"
+     - "6003:80"
     environment:
      - TARGET=initDB

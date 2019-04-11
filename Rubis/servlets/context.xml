@@ -31,7 +31,7 @@
   <Resource name="jdbc/Rubismysql" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="10" maxWaitMillis="30000" removeAbandonedOnBorrow="true" 
 	       username="rubis" password="rubis" driverClassName="com.mysql.jdbc.Driver"
-	       url="jdbc:mysql://dockerfiles_rubisdb_1:3306/rubis?autoReconnect=true&amp;useSSL=false"/>
+	       url="jdbc:mysql://rubisdb:3306/rubis?autoReconnect=true&amp;useSSL=false"/>
    
 
   
